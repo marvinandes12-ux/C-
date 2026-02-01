@@ -1,0 +1,83 @@
+using System;
+
+class Task4
+{
+    static int Add(int a, int b)
+    {
+        return a + b;
+    }
+
+    static int Subtract(int a, int b)
+    {
+        return a - b;
+    }
+
+    static int Multiply(int a, int b)
+    {
+        return a * b;
+    }
+
+    static double Divide(int a, int b)
+    {
+        return (double)a / b;
+    }
+
+    static void Main()
+    {
+        string repeat = "Y";
+
+        while (repeat.ToUpper() == "Y")
+        {
+            Console.WriteLine("Press any following key to perform an arithmetic operation:");
+            Console.WriteLine("1 - Addition");
+            Console.WriteLine("2 - Subtraction");
+            Console.WriteLine("3 - Multiplication");
+            Console.WriteLine("4 - Division");
+
+            Console.Write("Enter your operation (1-4): ");
+            string choice = Console.ReadLine();
+
+            Console.Write("Enter Value 1: ");
+            int value1 = int.Parse(Console.ReadLine());
+
+            Console.Write("Enter Value 2: ");
+            int value2 = int.Parse(Console.ReadLine());
+
+            string result = "";
+
+            switch (choice)
+            {
+                case "1":
+                    result = $"{value1} + {value2} = {Add(value1, value2)}";
+                    break;
+                case "2":
+                    result = $"{value1} - {value2} = {Subtract(value1, value2)}";
+                    break;
+                case "3":
+                    result = $"{value1} * {value2} = {Multiply(value1, value2)}";
+                    break;
+                case "4":
+                    if (value2 != 0)
+                    {
+                        result = $"{value1} / {value2} = {Divide(value1, value2)}";
+                    }
+                    else
+                    {
+                        result = "Error: Cannot divide by zero!";
+                    }
+                    break;
+                default:
+                    result = "Invalid choice! Please select 1, 2, 3, or 4.";
+                    break;
+            }
+
+            Console.WriteLine(result);
+
+            Console.Write("Do you want to continue again (Y/N)? ");
+            repeat = Console.ReadLine();
+            Console.WriteLine();
+        }
+
+        Console.WriteLine("Calculator program ended. Thank you!");
+    }
+}
